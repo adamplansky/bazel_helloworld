@@ -83,3 +83,22 @@ local_repository(
 load("@hello2//:prdel.bzl", "go_repositories")
 ##
 go_repositories()
+
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# multirun is written in Go and hence needs rules_go to be built.
+# See https://github.com/bazelbuild/rules_go for the up to date setup instructions.
+http_archive(
+    name = "io_bazel_rules_go",
+)
+
+http_archive(
+    name = "com_github_atlassian_bazel_tools",
+    strip_prefix = "bazel-tools-0270ca426fbf29b09ea282bd2cc09406fa614fea",
+    urls = ["https://github.com/atlassian/bazel-tools/archive/0270ca426fbf29b09ea282bd2cc09406fa614fea.tar.gz"],
+)
+
+load("@com_github_atlassian_bazel_tools//multirun:deps.bzl", "multirun_dependencies")
+
+multirun_dependencies()

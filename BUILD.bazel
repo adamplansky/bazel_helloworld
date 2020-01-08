@@ -1,6 +1,16 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@com_github_atlassian_bazel_tools//multirun:def.bzl", "command", "multirun")
 
 # gazelle:exclude hello2
 # gazelle:proto disable
 # gazelle:prefix github.com/adamplansky/bazel_helloworld
 gazelle(name = "gazelle")
+
+multirun(
+    name = "run_all_parallel",
+    commands = [
+        "//hello4",
+        "@hello2//:hello2",
+    ],
+    parallel = True,
+)
