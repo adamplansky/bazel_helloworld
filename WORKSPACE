@@ -80,7 +80,7 @@ local_repository(
     path = "hello2",
 )
 ##
-load("@hello2//:prdel.bzl", "go_repositories")
+load("@hello2//:repositories.bzl", "go_repositories")
 ##
 go_repositories()
 

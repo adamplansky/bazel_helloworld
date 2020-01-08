@@ -3,28 +3,13 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 
 # gazelle:exclude vendor
 # gazelle:proto disable
-# gazelle:prefix prdel
+# gazelle:prefix github.com/adamplansky/bazel_helloworld/hello2
 gazelle(name = "gazelle")
-
-#go_library(
-#    name = "go_default_library",
-#    srcs = ["main.go"],
-#    importpath = "github.com/adamplansky/bazel_helloworld/hello2",
-#    #    visibility = ["//visibility:private"],
-#    visibility = ["//visibility:public"],
-#    deps = ["@hello2_com_github_adamplansky_bazel_deps//hello:go_default_library"],
-#)
-#
-#go_binary(
-#    name = "hello2",
-#    embed = [":go_default_library"],
-#    visibility = ["//visibility:public"],
-#)
 
 go_library(
     name = "go_default_library",
     srcs = ["main.go"],
-    importpath = "prdel",
+    importpath = "github.com/adamplansky/bazel_helloworld/hello2",
     visibility = ["//visibility:private"],
     deps = ["@hello2_com_github_adamplansky_bazel_deps//hello:go_default_library"],
 )
