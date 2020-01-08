@@ -1,0 +1,2 @@
+go get github.com/adamplansky/bazel_deps@f646e1270ebe834cd5b6e6f997b9fa71d6d2a97a
+

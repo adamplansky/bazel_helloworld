@@ -6,6 +6,6 @@ import (
 )
 
 func main(){
-	hello := hello.Hello()
-	fmt.Println(hello)
+	x := hello.Hello()
+	fmt.Println(x)
 }

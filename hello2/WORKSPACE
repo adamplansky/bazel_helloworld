@@ -1,7 +1,6 @@
+workspace(name = "hello2")
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-
-
 
 http_archive(
     name = "io_bazel_rules_go",
@@ -27,16 +26,12 @@ http_archive(
     ],
 )
 
-load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 
 gazelle_dependencies()
 
-
-
-
-# gazelle:repository_macro repositories.bzl%go_repositories
-load("//:repositories.bzl", "go_repositories")
-
+# gazelle:repository_macro prdel.bzl%go_repositories
+load("//:prdel.bzl", "go_repositories")
 go_repositories()
 
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
@@ -52,34 +47,6 @@ load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
 
-load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 
 gazelle_dependencies()
-
-
-#go_repository(
-#    name = "hello2",
-#    importpath = "github.com/adamplansky/bazel_helloworld/hello2",
-#    remote = "./hello2",
-#    vcs = "git",
-#    commit = "f646e1270ebe834cd5b6e6f997b9fa71d6d2a97a"
-#)
-
-
-
-
-#    go_repository(
-#        name = "com_github_adamplansky_bazel_deps",
-#        importpath = "github.com/adamplansky/bazel_deps",
-#        sum = "h1:WLuytpVD9QufzXlGFKYLrUxg/FgyiFF7Am7DlxnsL6w=",
-#        version = "v0.0.0-20200108055315-68dd87c47efb",
-#    )
-
-local_repository(
-    name = "hello2",
-    path = "hello2",
-)
-##
-load("@hello2//:prdel.bzl", "go_repositories")
-##
-go_repositories()

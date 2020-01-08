@@ -1,6 +1,6 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
-# gazelle:exclude vendor
+# gazelle:exclude hello2
 # gazelle:proto disable
 # gazelle:prefix github.com/adamplansky/bazel_helloworld
 gazelle(name = "gazelle")
